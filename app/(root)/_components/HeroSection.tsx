@@ -28,6 +28,10 @@ export default function Hero() {
                 </div>
 
             </div>
+            <div className="mt-10 flex items-center gap-3">
+                <button className="bg-primary-200 text-secondary-900 font-bold text-xl rounded-lg py-3 px-8 border border-secondary-600 cursor-pointer hover:bg-primary-400">Hire Me</button>
+                <button className="bg-secondary-700 text-white font-bold text-xl rounded-lg py-3 px-8 border border-white cursor-pointer hover:bg-secondary-900">Download Cv</button>
+            </div>
         </div>
       </div>
 

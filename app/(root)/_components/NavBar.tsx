@@ -29,7 +29,7 @@ export default function Navbar() {
           <h1 className={`text-2xl font-black font-raleway transition-colors ${
             isScrolled ? "text-white" : "text-black"
           }`}>
-            PORTFOLIO.
+            AmerieSh
           </h1>
         </div>
 
