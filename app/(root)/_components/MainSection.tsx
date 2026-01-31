@@ -1,6 +1,8 @@
 import { Download } from 'lucide-react'
 import React from 'react'
 import Image from 'next/image'
+import { ExternalLink } from 'lucide-react'
+import MyProjects from './MyProjects'
 
 function MainSection() {
   return (
@@ -395,6 +397,8 @@ function MainSection() {
             </div>
           </section>
         </div>
+        <MyProjects/>
+
     </div>
   )
 }
