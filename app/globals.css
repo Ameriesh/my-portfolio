@@ -37,3 +37,7 @@
     @apply text-5xl font-black flex items-center gap-4
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

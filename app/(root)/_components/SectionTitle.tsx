@@ -26,9 +26,12 @@ function SectionTitle() {
             I’m someone who likes to experiment, improve, and push myself a bit further with every project. 
             I take my work seriously, but I also believe that building great products should stay fun.
           </p>
-          <button className='text-white font-bold border-x-3 border-white px-5 text-lg py-1 cursor-pointer hover:font-extrabold transition-all'>
+          <a href="#about">
+            <button className='text-white font-bold border-x-3 border-white px-5 text-lg py-1 cursor-pointer hover:font-extrabold transition-all'>
             READ MORE
           </button>
+          </a>
+          
         </motion.div>
 
         {/* BLOC IMAGE/LOGO */}
@@ -43,7 +46,7 @@ function SectionTitle() {
           <Image 
             src={logoitb} 
             alt="logoitb" 
-            className="w-full h-60 object-contain"
+            className="w-full h-60 object-contain hidden lg:block"
           />
         </motion.div>
         

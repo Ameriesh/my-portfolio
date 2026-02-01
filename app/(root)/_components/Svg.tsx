@@ -18,11 +18,11 @@ export default function HeroSVGAnimation() {
         <div className="relative w-full h-full flex flex-col items-center justify-center p-10">
             <motion.svg
                 width="100%"
-                height="auto"
+                
                 viewBox="0 0 600 120"
                 initial="hidden"
                 animate="visible"
-                className="drop-shadow-[0_0_10px_rgba(215,215,215,0.3)]"
+                className="drop-shadow-[0_0_10px_rgba(215,215,215,0.3)] h-auto"
             >
                 <g fill="none" stroke="#D7D7D7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     {/* A */}

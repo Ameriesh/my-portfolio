@@ -43,18 +43,26 @@ export default function Navbar() {
           </h1>
         </div>
 
-        {/* DESKTOP NAV - Hidden on Mobile */}
+        {/* DESKTOP NAV */}
         <div className="hidden lg:flex items-center justify-end pr-20 gap-10">
           <ul className="flex gap-10 text-white font-bold items-center">
             {navLinks.map((link) => (
-              <li key={link.name} className="hover:text-[#D7D7D7] transition-colors cursor-pointer text-sm uppercase tracking-widest">
-                {link.name}
+              <li key={link.name}>
+                <a 
+                  href={link.href} 
+                  className="hover:text-[#D7D7D7] transition-colors cursor-pointer text-sm uppercase tracking-widest"
+                >
+                  {link.name}
+                </a>
               </li>
             ))}
             <li>
-              <button className="bg-white text-black px-6 py-2 rounded-full font-black text-sm hover:bg-[#D7D7D7] transition-all transform hover:scale-105">
-                CONTACT ME
-              </button>
+              {/* On ajoute le lien sur le bouton Contact aussi */}
+              <a href="#contact">
+                <button className="bg-white text-black px-6 py-2 rounded-full font-black text-sm hover:bg-[#D7D7D7] transition-all transform hover:scale-105">
+                  CONTACT ME
+                </button>
+              </a>
             </li>
           </ul>
         </div>
@@ -86,9 +94,12 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <button className="mt-4 bg-[#D7D7D7] text-black px-10 py-4 rounded-full font-black text-lg">
-                CONTACT ME
-              </button>
+              <a href="#contact">
+                <button className="mt-4 bg-[#D7D7D7] text-black px-10 py-4 rounded-full font-black text-lg">
+                  CONTACT ME
+                </button>
+              </a>
+              
             </motion.div>
           )}
         </AnimatePresence>
