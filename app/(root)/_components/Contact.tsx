@@ -2,6 +2,8 @@
 import React from 'react'
 import { motion, Variants } from 'framer-motion'
 import { Mail, Github, Linkedin, ArrowUpRight, Send } from 'lucide-react'
+import { useState } from 'react'
+import { Loader2, CheckCircle2 } from 'lucide-react'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -21,6 +23,39 @@ const itemVariants: Variants = {
 }
 
 function ContactSection() {
+  // 1. État pour gérer le formulaire
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  // 2. Fonction de soumission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        (e.target as HTMLFormElement).reset(); // On vide le formulaire
+        setTimeout(() => setStatus('idle'), 5000); // Retour à l'état normal après 5s
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
   return (
     <section className="py-24 bg-[#D7D7D7] text-secondary-900" id='contact'>
       <div className="px-6 md:px-20 lg:px-40 mx-auto">
@@ -65,8 +100,8 @@ function ContactSection() {
             <motion.div variants={itemVariants} className="flex gap-8 mt-12 md:mt-20">
               {[
                 { name: 'Email', icon: <Mail size={24} />, link: 'mailto:amerieninmazou@gmail.com.com' },
-                { name: 'GitHub', icon: <Github size={24} />, link: '#' },
-                { name: 'LinkedIn', icon: <Linkedin size={24} />, link: '#' }
+                { name: 'GitHub', icon: <Github size={24} />, link: 'https://github.com/Ameriesh' },
+                { name: 'LinkedIn', icon: <Linkedin size={24} />, link: 'https://linkedin.com/in/amerie-shella-ninmazou-tchoffo-919a0726a' }
               ].map((social, i) => (
                 <a 
                   key={i} 
@@ -83,6 +118,7 @@ function ContactSection() {
           </motion.div>
 
           {/* CÔTÉ DROIT : FORMULAIRE SOFT */}
+        
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -90,11 +126,13 @@ function ContactSection() {
             viewport={{ once: true }}
             className="relative bg-white/40 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/50 shadow-xl"
           >
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest ml-1">Full Name</label>
                 <input 
+                  name="name" // IMPORTANT: Attribut name
                   type="text" 
+                  required
                   placeholder="John Doe" 
                   className="w-full bg-white/50 border-b-2 border-secondary-900/10 py-4 px-4 rounded-xl focus:outline-none focus:border-primary-600 transition-colors placeholder:text-secondary-400"
                 />
@@ -103,7 +141,9 @@ function ContactSection() {
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest ml-1">Email Address</label>
                 <input 
+                  name="email" // IMPORTANT: Attribut name
                   type="email" 
+                  required
                   placeholder="john@example.com" 
                   className="w-full bg-white/50 border-b-2 border-secondary-900/10 py-4 px-4 rounded-xl focus:outline-none focus:border-primary-600 transition-colors placeholder:text-secondary-400"
                 />
@@ -112,6 +152,8 @@ function ContactSection() {
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest ml-1">Your Message</label>
                 <textarea 
+                  name="message" // IMPORTANT: Attribut name
+                  required
                   rows={4} 
                   placeholder="Tell me about your project..." 
                   className="w-full bg-white/50 border-b-2 border-secondary-900/10 py-4 px-4 rounded-xl focus:outline-none focus:border-primary-600 transition-colors resize-none placeholder:text-secondary-400"
@@ -119,12 +161,27 @@ function ContactSection() {
               </div>
 
               <motion.button 
+                disabled={status === 'loading'}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-5 bg-secondary-900 text-white rounded-xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 cursor-pointer transition-colors shadow-lg"
+                className={`w-full py-5 rounded-xl font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 cursor-pointer transition-all shadow-lg ${
+                  status === 'success' ? 'bg-green-600' : 'bg-secondary-900'
+                } text-white`}
               >
-                Send Message <Send size={16} />
+                {status === 'loading' ? (
+                  <>Sending... <Loader2 size={16} className="animate-spin" /></>
+                ) : status === 'success' ? (
+                  <>Message Sent! <CheckCircle2 size={16} /></>
+                ) : (
+                  <>Send Message <Send size={16} /></>
+                )}
               </motion.button>
+
+              {status === 'error' && (
+                <p className="text-red-600 text-[10px] font-bold uppercase text-center mt-2">
+                  Something went wrong. Please try again.
+                </p>
+              )}
             </form>
           </motion.div>
 

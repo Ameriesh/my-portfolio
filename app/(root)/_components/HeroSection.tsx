@@ -90,8 +90,8 @@ export default function Hero() {
  
   {/* BOUTON DOWNLOAD CV */}
   <a 
-    href="/cv-ton-nom.pdf"
-    download="CV_AmerieSh.pdf"
+    href="/cv-amerie.pdf"
+    download="cv-amerie.pdf"
     className="w-full sm:w-auto"
   >
     <button className="w-full h-[52px] bg-transparent text-secondary-900 font-bold px-8 rounded-lg border-2 border-secondary-900 hover:bg-secondary-900 hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer">

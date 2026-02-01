@@ -62,7 +62,7 @@ function MainSection() {
                 ))}
               </div>
               <div className="mt-8">
-                <a  href="/cv-ton-nom.pdf"download="CV_AmerieSh.pdf">
+                <a  href="/cv-amerie.pdf" download="cv-amerie.pdf">
                   <button className='flex items-center gap-2 px-5 py-1 border-x-2 border-secondary-600 mt-5 cursor-pointer'>
                         <Download className='h-5 w-5 text-secondary-600'/>
                         <span className='text-secondary-700 font-bold hover:font-extrabold text-lg'>Download CV</span>
