@@ -29,7 +29,7 @@ function MainSection() {
               <div className='relative aspect-square w-full max-w-[450px] mx-auto overflow-hidden rounded-xl bg-secondary-200 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]'
                   style={{ clipPath: 'polygon(0 0, 90% 0, 100% 100%, 10% 100%)' }}>
                 <div className="w-full h-full bg-gradient-to-tr from-secondary-800 to-secondary-500 flex items-center justify-center text-white/20 italic">
-                  Your Photo Here
+                  My Photo Here
                 </div>
               </div>
             </div>
