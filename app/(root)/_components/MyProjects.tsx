@@ -117,7 +117,7 @@ const projects = [
   {
     id: "01",
     title: "Rheamar Tech",
-    description: "Built a high-end corporate ecosystem for an IT agency specializing in Fullstack, Mobile, and DevOps solutions. Engineered with a focus on high performance, scalability, and intuitive user experiences.",
+    description: "Designed and developed a modern landing page for an IT services firm. Features a responsive service catalog and a seamless contact form powered by Node.js and Resend for client inquiries.",
     image: "/assets/images/rheamar.png", 
     tags: ["React.js", "Tailwind CSS", "UI/UX", "Node Js"],
     link: "https://www.rheamartech.com/"
@@ -133,7 +133,7 @@ const projects = [
   {
     id: "03",
     title: "Global Car Consulting",
-    description: "Digital presence for an automotive consulting firm. Streamlining vehicle registration and customs clearance processes through a modern, service-oriented web platform.",
+    description: "igital presence for an automotive consulting firm. Developed a modern, service-oriented platform to streamline how clients discover and access vehicle registration and customs clearance services.",
     image: "/assets/images/car.png", 
     tags: ["React JS", "Tailwind CSS"],
     link: "https://globalcarconsulting.vercel.app/" 
